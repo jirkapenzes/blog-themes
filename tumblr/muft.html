@@ -21,7 +21,9 @@ Modified by: jirkapenzes
          
         <!-- BOOLEAN OPTIONS -->    	
 		<meta name="if:Use Google Web Fonts" content="1"/>
-		<meta name="if:Show Menu" content="1"/>
+		<meta name="if:Show Social Network" content="1"/>
+		<meta name="if:Show Social Network Icon" content="1"/>
+		<meta name="if:Show Social Network Text" content="1"/>
 		<meta name="if:Infinite Scrolling" content="0"/>
 				
 		<!-- IMAGES -->
@@ -42,7 +44,18 @@ Modified by: jirkapenzes
 		<meta name="text:Disqus Shortname" content=""/>
 		<meta name="text:Google Analytics ID" content=""/>
 		
+		<meta name="text:Navigation Description" content="">
 		<meta name="text:Footer Signature" content="">
+
+		<meta name="text:Twitter" content="">
+		<meta name="text:Github" content="">
+		<meta name="text:Instagram" content="">
+		<meta name="text:LinkedIn" content="">
+		<meta name="text:Facebook" content="">
+		<meta name="text:Foursquare" content="">
+		<meta name="text:Google Plus" content="">
+		<meta name="text:Tumblr" content="">
+		<meta name="text:StackOverflow" content="">
 		
         <title>{Title}</title>
         <meta name="description" content="{MetaDescription}">
@@ -55,6 +68,7 @@ Modified by: jirkapenzes
 			rel='stylesheet' type='text/css'>
 		{/block:IfUseGoogleWebfonts}
 
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link rel="alternate" type="application/rss+xml" href="{RSS}">
 
 		{block:IfFaviconImage}
@@ -278,7 +292,7 @@ Modified by: jirkapenzes
 
 			nav.menu ul li {
 				float:left;
-				margin:0 30px 0 0;
+				margin:0 15px 0 0;
 				padding:2px 0;
 				color: {color:Link}
 			}
@@ -581,6 +595,21 @@ Modified by: jirkapenzes
 			.footer-signature {
 			    color:#9d9d9d;
 			}
+
+			.nav-icon {
+				margin-left: 5px;
+			}
+			
+			li.social-network {
+			    font-size:10pt;
+			}
+			.social-network {
+			    color:#3d3d3d;
+			}
+			nav.social-network {
+			    margin-top: 10px;
+			    margin-bottom:10px;
+			}
 			
 		</style>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
@@ -594,17 +623,6 @@ Modified by: jirkapenzes
 					<h1><a href="/">{Title}</a></h1>
 					{block:Description}<p class="description">{Description}</p>{/block:Description}
 					<div class="clearfix"></div>
-					{block:ifShowMenu}
-					<nav class="menu">
-						<ul>
-							<li class="icon-archive"><a href="/archive">{text:Archive Title}</a></li>
-							<li class="icon-heart"><a href="http://www.tumblr.com/liked/by/{Name}">{text:Likes Title}</a></li>
-							{block:AskEnabled}<li class="icon-ask"><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
-							{block:SubmissionsEnabled}<li class="icon-submit"><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
-							{block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
-						</ul>
-					</nav>
-					{/block:ifShowMenu}
 				</header>
 			</div>
 			
@@ -854,6 +872,131 @@ Modified by: jirkapenzes
 						{block:IfNotInfiniteScrolling}
 					{/block:IndexPage}
 				</section>		
+				{block:ifShowSocialNetwork}
+					<nav class="menu social-network">
+						<ul>
+							{block:IfNavigationDescription}
+								<li class="social-network">{text:Navigation Description}</li>
+							{/block:IfNavigationDescription}
+							{block:IfTwitter}
+								<li class="social-network">
+									<a href="http://www.twitter.com/{text:Twitter}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-twitter nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Twitter
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfTwitter}
+							{block:IfGithub}
+								<li class="social-network">
+									<a href="http://www.github.com/{text:Github}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-github nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Github
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfGithub}
+							{block:IfInstagram}
+								<li class="social-network">
+									<a href="http://www.Instagram.com/{text:Instagram}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-instagram nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Instagram
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfInstagram}
+							{block:IfLinkedIn}
+								<li class="social-network">
+									<a href="http://www.linkedin.com/in/{text:LinkedIn}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-linkedin nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											LinkedIn
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfLinkedIn}
+							{block:IfFacebook}
+								<li class="social-network">
+									<a href="http://www.Facebook.com/{text:Twitter}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-facebook nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Facebook
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfFacebook}
+							{block:IfGooglePlus}
+								<li class="social-network">
+									<a href="http://plus.google.com/{text:Google Plus}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-google-plus nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Google+
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfGooglePlus}
+							{block:IfFoursquare}
+								<li class="social-network">
+									<a href="http://www.foursquare.com/{text:Foursquare}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-foursquare nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Foursquare
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfFoursquare}
+							{block:IfStackOverflow}
+								<li class="social-network">
+									<a href="http://stackoverflow.com/users/{text:StackOverflow}">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-stack-overflow nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Stack Overflow
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfStackOverflow}
+							{block:IfTumblr}
+								<li class="social-network">
+									<a href="http://{text:Tumblr}.tumblr.com/users/">
+										{block:ifShowSocialNetworkIcon}
+											<span class="fa fa-tumblr nav-icon social-network"></span>
+										{/block:ifShowSocialNetworkIcon}
+										{block:ifShowSocialNetworkText}
+											Tumblr
+										{/block:ifShowSocialNetworkText}
+									</a>
+								</li>
+							{/block:IfTumblr}
+							<!-- 
+							<li class="icon-archive"><a href="/archive">{text:Archive Title}</a></li>
+							<li class="icon-heart"><a href="http://www.tumblr.com/liked/by/{Name}">{text:Likes Title}</a></li>
+							-->
+							{block:AskEnabled}<li class="icon-ask"><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+							{block:SubmissionsEnabled}<li class="icon-submit"><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+							{block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+						</ul>
+					</nav>
+					{/block:ifShowSocialNetwork}
+
                     {block:IfFooterSignature}
                         <div class="footer-signature">
                             {text:Footer Signature}
