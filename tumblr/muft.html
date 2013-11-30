@@ -41,6 +41,8 @@ Support: hi@ajoen.com
 		<meta name="text:Disqus Shortname" content=""/>
 		<meta name="text:Google Analytics ID" content=""/>
 		
+		<meta name="text:Footer Signature" content="">
+		
         <title>{Title}</title>
         <meta name="description" content="{MetaDescription}">
         <meta name="viewport" content="width=device-width">
@@ -575,6 +577,10 @@ Support: hi@ajoen.com
 			
 			{CustomCSS}
 			
+			.footer-signature {
+			    color:#9d9d9d;
+			}
+			
 		</style>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     </head>
@@ -847,6 +853,11 @@ Support: hi@ajoen.com
 						{block:IfNotInfiniteScrolling}
 					{/block:IndexPage}
 				</section>		
+                    {block:IfFooterSignature}
+                        <div class="footer-signature">
+                            {text:Footer Signature}
+                        </div>
+                    {/block:IfFooterSignature}
 		</div>
 		
 		{block:IfInfiniteScrolling}
